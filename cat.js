@@ -1,10 +1,9 @@
 const fs = require('fs');
 
-module.exports = function(cmd) {
+module.exports = function(done, cmd) {
   let filename = cmd.split(' ')[1];
   fs.readFile(filename, (err, data) => {
     if (err) throw err;
-    process.stdout.write(data);
-    process.stdout.write('prompt > ');
+    done(data);
   });
 };
